@@ -50,6 +50,7 @@ class ClienteController extends Controller
 
     //funcion que nos permite registrar a los clientes
     public function store(ClienteFormRequest $request){
+        //extraccion del tipo de documento que se extrae de la vista agregar
         $doc=$request->get('tipo_documento');
 
         //condicion para registrar clientes naturales

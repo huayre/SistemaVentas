@@ -10,7 +10,7 @@
         </h3>
         <!--//se incluye la vista search.blade.php-->
 
-        @include('almacen.categoria.buscar')
+
     </div><!-- //14:01 7-36-->
 </div>
 

@@ -8,28 +8,24 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CategoriaFormRequest;
 use DB;
 
+use App\Repositories\Categoria\RositorioCategoria;
+
 class CategoriaController extends Controller
 {
-    public function __construct()
+    protected  $RepCategoria;
+    public function __construct(RositorioCategoria $RepCategoria)
     {
+        $this->RepCategoria=$RepCategoria;
       $this->middleware('auth');
     }
 
-     //funcion que nos permite extraer los datos de las categorias y enviar los datos a la vista
-    public function index(Request $request)
-    {
-        if($request)
-        {
-            $query=trim($request->get('searchText'));//campo que queremos filtrar
-            $categorias=DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
-            ->where('condicion','=','1')
-            ->orderBy('idcategoria','desc')
-            ->paginate(7);
-            return view('almacen.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
-        }
-    }
+    public  function index(){
 
-     //funcion que nos permite redireccionar a la vista para crear una nueva categoria
+       $Categoria=$this->RepCategoria->getAll();
+       $Categoria=Categoria::paginate(10);
+
+       return view('almacen.categoria.index',["categorias"=>$Categoria]);
+    }
     public function create(){
         return view("almacen.categoria.create");
     }

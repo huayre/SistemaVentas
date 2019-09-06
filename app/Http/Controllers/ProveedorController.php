@@ -37,9 +37,9 @@ class ProveedorController extends Controller
             return view('compra.proveedor.index',["proveedor"=>$proveedor,"searchText"=>$query]);
         }
     }
-
+    //nos lleva a crea un cliente
     public function create(){
-        return view("venta.cliente.create");
+        return view("compra.proveedore.create");
     }
 
     public function store(Request $request){
@@ -124,7 +124,7 @@ class ProveedorController extends Controller
 
 
     }
-
+    // busca en  en el api de la reniec
     function buscarRuc(Request $request)
     {
         $ruc =$request->get('ruc');
@@ -152,7 +152,7 @@ class ProveedorController extends Controller
         }
 
     }
-
+    //edita
     public function edit($id){
 
         return view("compra.proveedor.edit",["proveedor"=>Proveedor::findOrFail($id)]);

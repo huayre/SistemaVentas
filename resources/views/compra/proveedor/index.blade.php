@@ -103,6 +103,12 @@
                             </button>
 
                         </a>
+                         <a href="" data-target="#modal-delete-{{$pro->idproveedor}}" data-toggle="modal">
+                            <button  class="btn btn-secondary">
+                            <i class="fa fa-align-center"></i> VER
+                            </button>
+
+                        </a>
                     </td>
                 </tr>
                 @include('compra.proveedor.modal')
